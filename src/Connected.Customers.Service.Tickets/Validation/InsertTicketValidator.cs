@@ -10,7 +10,7 @@ internal sealed class InsertTicketValidator(IDeskService desks)
 {
 	protected override async Task OnInvoke()
 	{
-		if (await desks.Select(Dto.CreatePrimaryKey(Dto.Desk)) is null)
-			throw ValidationExceptions.NotFound(nameof(Dto.Desk), Dto.Desk);
+		if (await desks.Select(Dto.CreatePrimaryKey(Dto.Head)) is null)
+			throw ValidationExceptions.NotFound(nameof(Dto.Head), Dto.Head);
 	}
 }

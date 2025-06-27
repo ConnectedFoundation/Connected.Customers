@@ -8,7 +8,7 @@ namespace Connected.Customers.Service.Tickets;
 internal sealed record Ticket : Document<int>, ITicket
 {
 	[Ordinal(0)]
-	public int Desk { get; init; }
+	public int Head { get; init; }
 
 	[Ordinal(1)]
 	public TicketStatus Status { get; init; }

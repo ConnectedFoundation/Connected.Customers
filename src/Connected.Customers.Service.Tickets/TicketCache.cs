@@ -3,6 +3,6 @@
 namespace Connected.Customers.Service.Tickets;
 
 internal sealed class TicketCache(ICachingService cachingService)
-		: CacheContainer<Ticket, int>(cachingService, ServiceMetaData.TicketKey), ITicketCache
+		: CacheContainer<Ticket, string>(cachingService, ServiceMetaData.TicketKey), ITicketCache
 {
 }

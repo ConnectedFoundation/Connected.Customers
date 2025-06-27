@@ -8,7 +8,7 @@ namespace Connected.Customers.Service.Tickets;
 internal sealed class TicketService(IServiceProvider services)
 	: Services.Service(services), ITicketService
 {
-	public async Task Delete(IPrimaryKeyDto<int> dto)
+	public async Task Delete(IDependentPrimaryKeyDto<int, int> dto)
 	{
 		await Invoke(GetOperation<Delete>(), dto);
 	}
@@ -18,17 +18,22 @@ internal sealed class TicketService(IServiceProvider services)
 		return await Invoke(GetOperation<Insert>(), dto);
 	}
 
+	public async Task Patch(IDependentPatchDto<int, int> dto)
+	{
+		await Invoke(GetOperation<Patch>(), dto);
+	}
+
 	public async Task<IImmutableList<ITicket>> Query(IHeadDto<int> dto)
 	{
 		return await Invoke(GetOperation<Query>(), dto);
 	}
 
-	public async Task<ITicket?> Select(IPrimaryKeyDto<int> dto)
+	public async Task<ITicket?> Select(IDependentPrimaryKeyDto<int, int> dto)
 	{
 		return await Invoke(GetOperation<Select>(), dto);
 	}
 
-	public async Task<ITicket?> Select(IValueDto<string> dto)
+	public async Task<ITicket?> Select(ISelectTicketByUrlDto dto)
 	{
 		return await Invoke(GetOperation<SelectByUrl>(), dto);
 	}

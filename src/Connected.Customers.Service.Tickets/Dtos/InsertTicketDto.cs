@@ -8,5 +8,5 @@ internal sealed class InsertTicketDto : InsertDocumentDto, IInsertTicketDto
 	public TicketStatus Status { get; set; } = TicketStatus.Triage;
 
 	[MinValue(1)]
-	public int Desk { get; set; }
+	public int Head { get; set; }
 }

@@ -11,12 +11,12 @@ internal sealed class Insert(IStorageProvider storage, ITicketService tickets, I
 {
 	protected override async Task<int> OnInvoke()
 	{
-		var result = await storage.Open<Ticket>().Update(Dto.AsEntity<Ticket>(State.Add)) ?? throw new NullReferenceException(Strings.ErrEntityExpected);
+		var entity = await storage.Open<Ticket>().Update(Dto.AsEntity<Ticket>(State.Add)) ?? throw new NullReferenceException(Strings.ErrEntityExpected);
 
-		SetState(result);
+		SetState(entity);
 
-		await events.Inserted(this, tickets, result.Id);
+		await events.Inserted(this, tickets, entity.GenerateKey());
 
-		return result.Id;
+		return entity.Id;
 	}
 }

@@ -13,7 +13,7 @@ internal sealed class InsertTicketAmbient(ITicketService tickets) : AmbientProvi
 		if (Dto.Title is null)
 			return;
 
-		var existing = await tickets.Query(Dto.CreateHead(Dto.Desk));
+		var existing = await tickets.Query(Dto.CreateHead(Dto.Head));
 
 		Url = WebString.Create(Dto.Title, existing.Select(f => f.Url));
 	}

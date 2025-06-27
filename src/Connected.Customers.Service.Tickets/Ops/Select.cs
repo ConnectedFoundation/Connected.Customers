@@ -5,13 +5,15 @@ using Connected.Storage;
 namespace Connected.Customers.Service.Tickets.Ops;
 
 internal sealed class Select(IStorageProvider storage, ITicketCache cache)
-  : ServiceFunction<IPrimaryKeyDto<int>, ITicket?>
+  : ServiceFunction<IDependentPrimaryKeyDto<int, int>, ITicket?>
 {
 	protected override async Task<ITicket?> OnInvoke()
 	{
-		return await cache.Get(Dto.Id, async (f) =>
+		return await cache.Get(Dto.GenerateKey(), async (f) =>
 		{
-			return await storage.Open<Ticket>().AsEntity(f => f.Id == Dto.Id);
+			return await storage.Open<Ticket>().AsEntity(f =>
+					f.Head == Dto.Head
+				&& f.Id == Dto.Id);
 		});
 	}
 }

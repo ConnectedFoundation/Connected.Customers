@@ -1,4 +1,5 @@
 ﻿using Connected.Customers.Service.Tickets.Dtos;
+using Connected.Entities;
 using Connected.Notifications;
 using Connected.Services;
 using Connected.Storage;
@@ -12,14 +13,14 @@ internal sealed class Update(IStorageProvider storage, ITicketService tickets, I
 	{
 		var entity = SetState(await tickets.Select(Dto)) as Ticket ?? throw new NullReferenceException(Strings.ErrEntityExpected);
 
-		await storage.Open<Ticket>().Update(entity.Merge(Dto, Entities.State.Update), Dto, async () =>
+		await storage.Open<Ticket>().Update(entity.Merge(Dto, State.Update), Dto, async () =>
 		{
-			await cache.Remove(Dto.Id);
+			await cache.Remove(Dto.GenerateKey());
 
 			return await tickets.Select(Dto) as Ticket ?? throw new NullReferenceException(Strings.ErrEntityExpected);
 		}, Caller);
 
-		await cache.Remove(Dto.Id);
-		await events.Updated(this, tickets, entity.Id);
+		await cache.Remove(Dto.GenerateKey());
+		await events.Updated(this, tickets, Dto.GenerateKey());
 	}
 }

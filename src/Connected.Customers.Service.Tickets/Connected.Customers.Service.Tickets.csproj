@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Core.Entities.Extensions\Connected.Core.Entities.Extensions.csproj" />
     <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Sdk\Connected.Sdk.csproj" />
     <ProjectReference Include="..\..\..\Connected.Documents\src\Connected.Documents.Extensions\Connected.Documents.Extensions.csproj" />
     <ProjectReference Include="..\Connected.Customers.Service.Model\Connected.Customers.Service.Model.csproj" />

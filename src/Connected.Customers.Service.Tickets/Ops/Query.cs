@@ -10,6 +10,6 @@ internal sealed class Query(IStorageProvider storage)
 {
 	protected override async Task<IImmutableList<ITicket>> OnInvoke()
 	{
-		return await storage.Open<Ticket>().AsEntities<ITicket>(f => f.Desk == Dto.Head);
+		return await storage.Open<Ticket>().AsEntities<ITicket>(f => f.Head == Dto.Head);
 	}
 }

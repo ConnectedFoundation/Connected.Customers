@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>Connected.Customers.Service</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Connected.ServiceModel\src\Connected.ServiceModel.Storage.Model\Connected.ServiceModel.Storage.Model.csproj" />
+	  <ProjectReference Include="..\Connected.Customers.Service.Model\Connected.Customers.Service.Model.csproj" />
+	</ItemGroup>
+
+</Project>
