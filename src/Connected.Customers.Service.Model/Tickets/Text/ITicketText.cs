@@ -1,6 +1,6 @@
 ﻿using Connected.Documents.Text;
 
-namespace Connected.Customers.Service.Tickets;
+namespace Connected.Customers.Service.Tickets.Text;
 
 public interface ITicketText : IDocumentText<int>
 {

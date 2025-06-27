@@ -1,8 +1,12 @@
-﻿using Connected.Documents.Dtos;
+﻿using Connected.Annotations;
+using Connected.Documents.Dtos;
 
 namespace Connected.Customers.Service.Tickets.Dtos;
 
 internal sealed class InsertTicketDto : InsertDocumentDto, IInsertTicketDto
 {
 	public TicketStatus Status { get; set; } = TicketStatus.Triage;
+
+	[MinValue(1)]
+	public int Desk { get; set; }
 }

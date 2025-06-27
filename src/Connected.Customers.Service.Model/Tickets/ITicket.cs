@@ -13,4 +13,5 @@ public enum TicketStatus
 public interface ITicket : IDocument<int>
 {
 	TicketStatus Status { get; init; }
+	int Desk { get; init; }
 }

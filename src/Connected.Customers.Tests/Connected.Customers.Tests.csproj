@@ -1,19 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>2e4f17a4-8d85-4bf1-8be9-9e0edc9cd6e7</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Core.Storage.Sql\Connected.Core.Storage.Sql.csproj" />
-    <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Runtime\Connected.Runtime.csproj" />
+    <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Sdk\Connected.Sdk.csproj" />
     <ProjectReference Include="..\Connected.Customers.Service.Desks\Connected.Customers.Service.Desks.csproj" />
+    <ProjectReference Include="..\Connected.Customers.Service.Model\Connected.Customers.Service.Model.csproj" />
     <ProjectReference Include="..\Connected.Customers.Service.Tickets\Connected.Customers.Service.Tickets.csproj" />
-    <ProjectReference Include="..\Connected.Customers.Tests\Connected.Customers.Tests.csproj" />
   </ItemGroup>
 
 </Project>

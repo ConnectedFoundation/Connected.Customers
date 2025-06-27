@@ -6,4 +6,7 @@ public static class ServiceUrls
 
 	public const string Tickets = $"{Namespace}/tickets";
 	public const string Desks = $"{Namespace}/desks";
+	public const string TicketTexts = $"{Namespace}/tickets/texts";
+
+	public const string SelectByUrlOperation = "select-by-url";
 }

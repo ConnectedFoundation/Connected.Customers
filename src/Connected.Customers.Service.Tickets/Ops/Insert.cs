@@ -1,4 +1,5 @@
 ﻿using Connected.Customers.Service.Tickets.Dtos;
+using Connected.Entities;
 using Connected.Notifications;
 using Connected.Services;
 using Connected.Storage;
@@ -10,7 +11,9 @@ internal sealed class Insert(IStorageProvider storage, ITicketService tickets, I
 {
 	protected override async Task<int> OnInvoke()
 	{
-		var result = await storage.Open<Ticket>().Update(Dto.AsEntity<Ticket>(Entities.State.Add)) ?? throw new NullReferenceException(Strings.ErrEntityExpected);
+		var result = await storage.Open<Ticket>().Update(Dto.AsEntity<Ticket>(State.Add)) ?? throw new NullReferenceException(Strings.ErrEntityExpected);
+
+		SetState(result);
 
 		await events.Inserted(this, tickets, result.Id);
 

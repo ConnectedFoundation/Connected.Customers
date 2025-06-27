@@ -1,13 +1,18 @@
 ﻿using Connected;
+using Connected.Customers.Tests;
 
-namespace TestClient;
+Application.RegisterMicroService("Connected.Customers.Service.Desks.dll");
+Application.RegisterMicroService("Connected.Customers.Service.Tickets.dll");
+Application.RegisterMicroService("Connected.Customers.Tests.dll");
 
-internal class Program
+var thread = new Thread(new ThreadStart(async () =>
 {
-	static async Task Main(string[] args)
-	{
-		Application.RegisterMicroService("Connected.Customers.Service.Tickets.dll");
+	while (!Application.HasStarted)
+		Thread.Sleep(500);
 
-		await Application.StartDefaultApplication(args);
-	}
-}
+	await DeskTests.Run();
+}));
+
+thread.Start();
+
+await Application.StartDefaultApplication(args);
