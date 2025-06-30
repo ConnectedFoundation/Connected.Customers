@@ -15,7 +15,7 @@ internal sealed class Insert(IStorageProvider storage, ITicketTextService text, 
 
 		SetState(result);
 
-		await events.Inserted(this, text, result.Id);
+		await events.Inserted(this, text, result.DistributedKey());
 
 		return result.Id;
 	}

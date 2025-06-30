@@ -15,16 +15,16 @@ public interface ITicketService
 	Task Update(IUpdateTicketDto dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Patch)]
-	Task Patch(IDependentPatchDto<int, int> dto);
+	Task Patch(IDistributedPatchDto<int, int> dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Delete)]
-	Task Delete(IDependentPrimaryKeyDto<int, int> dto);
+	Task Delete(IDistributedPrimaryKeyDto<int, int> dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Get)]
 	Task<IImmutableList<ITicket>> Query(IHeadDto<int> dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Get)]
-	Task<ITicket?> Select(IDependentPrimaryKeyDto<int, int> dto);
+	Task<ITicket?> Select(IDistributedPrimaryKeyDto<int, int> dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Get), ServiceUrl(ServiceUrls.SelectByUrlOperation)]
 	Task<ITicket?> Select(ISelectTicketByUrlDto dto);

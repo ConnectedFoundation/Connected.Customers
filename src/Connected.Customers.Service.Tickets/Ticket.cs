@@ -11,5 +11,5 @@ internal sealed record Ticket : Document<int>, ITicket
 	public int Head { get; init; }
 
 	[Ordinal(1)]
-	public TicketStatus Status { get; init; }
+	public TicketStage Stage { get; init; }
 }

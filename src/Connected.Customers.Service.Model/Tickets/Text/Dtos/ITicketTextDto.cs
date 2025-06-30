@@ -4,4 +4,5 @@ namespace Connected.Customers.Service.Tickets.Text.Dtos;
 
 public interface ITicketTextDto : IDocumentTextDto<int>
 {
+	int Head { get; set; }
 }

@@ -3,6 +3,6 @@
 namespace Connected.Customers.Service.Tickets.Text;
 
 internal interface ITicketTextCache
-	: ICacheContainer<TicketText, int>
+	: ICacheContainer<TicketText, string>
 {
 }

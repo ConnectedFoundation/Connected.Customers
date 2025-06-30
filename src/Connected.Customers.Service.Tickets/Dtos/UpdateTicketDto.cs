@@ -1,4 +1,5 @@
 ﻿using Connected.Annotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Connected.Customers.Service.Tickets.Dtos;
 
@@ -8,7 +9,9 @@ internal sealed class UpdateTicketDto : TicketDto, IUpdateTicketDto
 	public int Id { get; set; }
 
 	public DateTimeOffset? Modified { get; set; }
-	public int? Owner { get; set; }
+
+	[MaxLength(256)]
+	public string? Owner { get; set; }
 
 	[MinValue(0)]
 	public int FileCount { get; set; }

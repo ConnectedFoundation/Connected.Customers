@@ -4,7 +4,7 @@ using Connected.Services;
 namespace Connected.Customers.Service.Tickets.Ops;
 
 internal sealed class Patch(ITicketService tickets)
-  : ServiceAction<IDependentPatchDto<int, int>>
+  : ServiceAction<IDistributedPatchDto<int, int>>
 {
 	protected override async Task OnInvoke()
 	{

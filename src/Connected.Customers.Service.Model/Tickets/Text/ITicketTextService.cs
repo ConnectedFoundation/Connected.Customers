@@ -16,11 +16,11 @@ public interface ITicketTextService
 	Task Update(IUpdateTicketTextDto dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Delete)]
-	Task Delete(IPrimaryKeyDto<int> dto);
+	Task Delete(IDistributedPrimaryKeyDto<int, int> dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Get)]
-	Task<IImmutableList<ITicketText>> Query(IPrimaryKeyListDto<int> dto);
+	Task<IImmutableList<ITicketText>> Query(IDistributedPrimaryKeyListDto<int, int> dto);
 
 	[ServiceOperation(ServiceOperationVerbs.Get)]
-	Task<ITicketText?> Select(IPrimaryKeyDto<int> dto);
+	Task<ITicketText?> Select(IDistributedPrimaryKeyDto<int, int> dto);
 }

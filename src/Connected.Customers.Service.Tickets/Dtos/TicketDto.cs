@@ -5,7 +5,7 @@ namespace Connected.Customers.Service.Tickets.Dtos;
 
 internal abstract class TicketDto : DocumentDto, ITicketDto
 {
-	public TicketStatus Status { get; set; } = TicketStatus.Triage;
+	public TicketStage Stage { get; set; } = TicketStage.Triage;
 
 	[MinValue(1)]
 	public int Head { get; set; }

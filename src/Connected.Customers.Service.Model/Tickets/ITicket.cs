@@ -3,7 +3,7 @@ using Connected.Entities;
 
 namespace Connected.Customers.Service.Tickets;
 
-public enum TicketStatus
+public enum TicketStage
 {
 	Triage = 1,
 	Active = 2,
@@ -11,7 +11,7 @@ public enum TicketStatus
 	Archive = 4
 }
 
-public interface ITicket : IDocument<int>, IDependentEntity<int, int>
+public interface ITicket : IDocument<int>, IDistributedEntity<int, int>
 {
-	TicketStatus Status { get; init; }
+	TicketStage Stage { get; init; }
 }

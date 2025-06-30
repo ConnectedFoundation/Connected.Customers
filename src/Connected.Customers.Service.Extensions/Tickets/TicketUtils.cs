@@ -32,6 +32,6 @@ public static class TicketUtils
 		if (parser.Desk is null || parser.Ticket is null)
 			return null;
 
-		return await tickets.Select(Dto.Factory.CreateDependentPrimaryKey(parser.Desk.GetValueOrDefault(), parser.Ticket.GetValueOrDefault()));
+		return await tickets.Select(Dto.Factory.CreateDistributedPrimaryKey(parser.Desk.GetValueOrDefault(), parser.Ticket.GetValueOrDefault()));
 	}
 }

@@ -30,7 +30,7 @@ internal sealed class FileCountSynchronizer(ITicketService tickets, IFileService
 			{ nameof(IUpdateTicketDto.FileCount), fileSet.Count }
 		};
 
-		var patchDto = dto.CreateDependentPatch(ticket.Head, ticket.Id, props);
+		var patchDto = dto.CreateDistributedPatch(ticket.Head, ticket.Id, props);
 
 		await tickets.Patch(patchDto);
 	}

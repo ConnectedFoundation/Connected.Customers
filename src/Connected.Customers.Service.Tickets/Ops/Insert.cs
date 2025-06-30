@@ -15,7 +15,7 @@ internal sealed class Insert(IStorageProvider storage, ITicketService tickets, I
 
 		SetState(entity);
 
-		await events.Inserted(this, tickets, entity.GenerateKey());
+		await events.Inserted(this, tickets, entity.DistributedKey());
 
 		return entity.Id;
 	}

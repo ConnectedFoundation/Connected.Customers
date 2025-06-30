@@ -15,12 +15,12 @@ internal sealed class Update(IStorageProvider storage, ITicketTextService text, 
 
 		await storage.Open<TicketText>().Update(entity.Merge(Dto, State.Update), Dto, async () =>
 		{
-			await cache.Remove(Dto.Id);
+			await cache.Remove(Dto.DistributedKey());
 
 			return await text.Select(Dto) as TicketText ?? throw new NullReferenceException(Strings.ErrEntityExpected);
 		}, Caller);
 
-		await cache.Remove(Dto.Id);
-		await events.Updated(this, text, entity.Id);
+		await cache.Remove(Dto.DistributedKey());
+		await events.Updated(this, text, entity.DistributedKey());
 	}
 }

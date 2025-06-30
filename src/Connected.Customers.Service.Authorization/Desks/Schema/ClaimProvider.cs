@@ -20,6 +20,7 @@ internal sealed class ClaimProvider : ClaimDescriptorProvider
 			result.Add(new ClaimDescriptor { Id = DeskClaims.UpdateDesk, Text = DeskClaims.UpdateDesk });
 			result.Add(new ClaimDescriptor { Id = DeskClaims.DeleteDesk, Text = DeskClaims.DeleteDesk });
 			result.Add(new ClaimDescriptor { Id = DeskClaims.DeskSecurity, Text = DeskClaims.DeskSecurity });
+			result.Add(new ClaimDescriptor { Id = DeskClaims.ModerateTickets, Text = DeskClaims.ModerateTickets });
 		}
 
 		return await Task.FromResult(result.ToImmutableList());

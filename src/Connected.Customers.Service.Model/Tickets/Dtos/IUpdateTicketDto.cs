@@ -3,6 +3,6 @@ using Connected.Services;
 
 namespace Connected.Customers.Service.Tickets.Dtos;
 
-public interface IUpdateTicketDto : IUpdateDocumentDto<int>, ITicketDto, IDependentPrimaryKeyDto<int, int>
+public interface IUpdateTicketDto : IUpdateDocumentDto<int>, ITicketDto, IDistributedPrimaryKeyDto<int, int>
 {
 }
