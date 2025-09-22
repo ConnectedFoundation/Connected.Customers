@@ -2,6 +2,6 @@
 
 namespace Connected.Customers.Service.Desks;
 
-internal interface IDeskCache : IEntityCache<Desk, int>
+internal interface IDeskCache : IEntityCache<IDesk, int>
 {
 }
