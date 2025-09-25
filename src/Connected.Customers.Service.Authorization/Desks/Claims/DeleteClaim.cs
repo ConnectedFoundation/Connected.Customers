@@ -22,10 +22,10 @@ internal sealed class DeleteClaim(IClaimService claims, IAuthenticationService a
 		if (claim is null)
 			return AuthorizationResult.Skip;
 
-		if (!string.Equals(claim.Type, ServiceMetaData.DeskKey, StringComparison.OrdinalIgnoreCase))
+		if (!string.Equals(claim.Entity, ServiceMetaData.DeskKey, StringComparison.OrdinalIgnoreCase))
 			return AuthorizationResult.Skip;
 
-		if (!await (await authentication.SelectIdentity()).HasClaim(claims, DeskClaims.DeskSecurity))
+		if (!await (await authentication.SelectIdentity()).HasClaim(claims, DeskClaims.DeskSecurity, ServiceMetaData.DeskKey, Dto.Id.ToString()))
 			return AuthorizationResult.Fail;
 
 		return AuthorizationResult.Pass;

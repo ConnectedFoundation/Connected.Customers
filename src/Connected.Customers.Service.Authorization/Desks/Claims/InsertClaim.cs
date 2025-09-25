@@ -16,7 +16,7 @@ internal sealed class InsertClaim(IClaimService claims, IAuthenticationService a
 		if (Dto is null)
 			return AuthorizationResult.Skip;
 
-		if (!string.Equals(Dto.Type, ServiceMetaData.DeskKey, StringComparison.OrdinalIgnoreCase))
+		if (!string.Equals(Dto.Entity, ServiceMetaData.DeskKey, StringComparison.OrdinalIgnoreCase))
 			return AuthorizationResult.Skip;
 
 		if (!await (await authentication.SelectIdentity()).HasClaim(claims, DeskClaims.DeskSecurity))

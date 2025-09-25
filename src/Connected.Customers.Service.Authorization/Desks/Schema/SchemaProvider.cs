@@ -10,16 +10,16 @@ internal sealed class DeskSchemaProvider(IDeskService desks) : ClaimSchemaProvid
 	{
 		var result = new List<IClaimSchema>();
 
-		if (Dto.Id is null)
-			result.Add(new ClaimSchema { Id = SchemaAttribute.CustomersSchema, Type = SchemaAttribute.CustomersSchema, Text = Strings.CustomersDomain });
-		else if (string.Equals(Dto.Id, SchemaAttribute.CustomersSchema, StringComparison.OrdinalIgnoreCase))
-			result.Add(new ClaimSchema { Id = AuthorizationMetaData.DesksKey, Type = SchemaAttribute.CustomersSchema, Text = SR.Desks });
-		else if (string.Equals(Dto.Id, AuthorizationMetaData.DesksKey, StringComparison.OrdinalIgnoreCase))
+		if (Dto.Entity is null)
+			result.Add(new ClaimSchema { Entity = SchemaAttribute.CustomersSchema, EntityId = SchemaAttribute.CustomersSchema, Text = Strings.CustomersDomain });
+		else if (string.Equals(Dto.Entity, SchemaAttribute.CustomersSchema, StringComparison.OrdinalIgnoreCase))
+			result.Add(new ClaimSchema { Entity = AuthorizationMetaData.DesksKey, EntityId = SchemaAttribute.CustomersSchema, Text = SR.Desks });
+		else if (string.Equals(Dto.Entity, AuthorizationMetaData.DesksKey, StringComparison.OrdinalIgnoreCase))
 		{
 			var items = await desks.Query(null);
 
 			foreach (var item in items)
-				result.Add(new ClaimSchema { Id = item.Id.ToString(), Type = ServiceMetaData.DeskKey, Text = item.Name });
+				result.Add(new ClaimSchema { Entity = item.Id.ToString(), EntityId = ServiceMetaData.DeskKey, Text = item.Name });
 		}
 
 		return result.ToImmutableList();

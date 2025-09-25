@@ -10,17 +10,17 @@ internal sealed class ClaimProvider : ClaimDescriptorProvider
 	{
 		var result = new List<IClaimDescriptor>();
 
-		if (string.Equals(Dto.Id, AuthorizationMetaData.DesksKey, StringComparison.OrdinalIgnoreCase)
-			&& string.Equals(Dto.Type, SchemaAttribute.CustomersSchema, StringComparison.OrdinalIgnoreCase))
+		if (string.Equals(Dto.EntityId, AuthorizationMetaData.DesksKey, StringComparison.OrdinalIgnoreCase)
+			&& string.Equals(Dto.Entity, SchemaAttribute.CustomersSchema, StringComparison.OrdinalIgnoreCase))
 		{
-			result.Add(new ClaimDescriptor { Id = DeskClaims.InsertDesk, Text = DeskClaims.InsertDesk });
+			result.Add(new ClaimDescriptor { Entity = SchemaAttribute.CustomersSchema, EntityId = AuthorizationMetaData.DesksKey, Value = DeskClaims.InsertDesk });
 		}
-		else if (string.Equals(Dto.Type, ServiceMetaData.DeskKey, StringComparison.OrdinalIgnoreCase))
+		else if (string.Equals(Dto.Entity, AuthorizationMetaData.DesksKey, StringComparison.OrdinalIgnoreCase))
 		{
-			result.Add(new ClaimDescriptor { Id = DeskClaims.UpdateDesk, Text = DeskClaims.UpdateDesk });
-			result.Add(new ClaimDescriptor { Id = DeskClaims.DeleteDesk, Text = DeskClaims.DeleteDesk });
-			result.Add(new ClaimDescriptor { Id = DeskClaims.DeskSecurity, Text = DeskClaims.DeskSecurity });
-			result.Add(new ClaimDescriptor { Id = DeskClaims.ModerateTickets, Text = DeskClaims.ModerateTickets });
+			result.Add(new ClaimDescriptor { Entity = AuthorizationMetaData.DesksKey, EntityId = ServiceMetaData.DeskKey, Value = DeskClaims.DeskSecurity, Text = DeskClaims.UpdateDesk });
+			result.Add(new ClaimDescriptor { Entity = AuthorizationMetaData.DesksKey, EntityId = ServiceMetaData.DeskKey, Value = DeskClaims.DeleteDesk, Text = DeskClaims.DeleteDesk });
+			result.Add(new ClaimDescriptor { Entity = AuthorizationMetaData.DesksKey, EntityId = ServiceMetaData.DeskKey, Value = DeskClaims.DeskSecurity, Text = DeskClaims.DeskSecurity });
+			result.Add(new ClaimDescriptor { Entity = AuthorizationMetaData.DesksKey, EntityId = ServiceMetaData.DeskKey, Value = DeskClaims.ModerateTickets, Text = DeskClaims.ModerateTickets });
 		}
 
 		return await Task.FromResult(result.ToImmutableList());
