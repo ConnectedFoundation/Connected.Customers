@@ -4,14 +4,17 @@ using Connected.Authorization;
 using Connected.Authorization.Services;
 using Connected.Customers.Service.Desks;
 using Connected.Customers.Service.Tickets.Dtos;
+using Connected.Entities;
 using Connected.Membership;
 using Connected.Membership.Claims;
 
 namespace Connected.Customers.Service.Tickets;
 
 [Middleware<ITicketService>(nameof(ITicketService.Update))]
-internal sealed class Insert(IClaimService claims, IAuthenticationService authentication, ITicketService tickets) : ServiceOperationAuthorization<IUpdateTicketDto>
+internal sealed class Update(IClaimService claims, IAuthenticationService authentication, ITicketService tickets) : ServiceOperationAuthorization<IUpdateTicketDto>
 {
+	public override string Entity => typeof(ITicket).EntityKey();
+	public override string EntityId => Dto.Id.ToString();
 	protected override async Task<AuthorizationResult> OnInvoke()
 	{
 		var ticket = await tickets.Select(Dto);
@@ -23,7 +26,7 @@ internal sealed class Insert(IClaimService claims, IAuthenticationService authen
 		/*
 		 * Ticket moderator can update any ticket
 		 */
-		if (await identity.HasClaim(claims, DeskClaims.ModerateTickets))
+		if (await identity.HasClaim(claims, DeskClaims.ModerateTickets, Entity, EntityId))
 			return AuthorizationResult.Pass;
 		/*
 		 * Author of the ticket can update its own ticket

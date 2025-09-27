@@ -6,6 +6,7 @@ using Connected.Customers.Service.Desks;
 using Connected.Customers.Service.Tickets;
 using Connected.Customers.Service.Tickets.Text;
 using Connected.Customers.Service.Tickets.Text.Dtos;
+using Connected.Entities;
 using Connected.Membership;
 using Connected.Membership.Claims;
 
@@ -15,6 +16,9 @@ namespace Connected.Customers.Service.TicketTexts;
 internal sealed class Insert(IClaimService claims, IAuthenticationService authentication, ITicketService tickets)
 	: ServiceOperationAuthorization<IInsertTicketTextDto>
 {
+	public override string Entity => typeof(ITicket).EntityKey();
+	public override string EntityId => Dto.Id.ToString();
+
 	protected override async Task<AuthorizationResult> OnInvoke()
 	{
 		var ticket = await tickets.Select(Dto);
@@ -24,7 +28,7 @@ internal sealed class Insert(IClaimService claims, IAuthenticationService authen
 
 		var identity = await authentication.SelectIdentity();
 
-		if (await identity.HasClaim(claims, DeskClaims.ModerateTickets))
+		if (await identity.HasClaim(claims, DeskClaims.ModerateTickets, Entity, EntityId))
 			return AuthorizationResult.Pass;
 
 		if (string.Equals(identity?.Token, ticket.Author, StringComparison.Ordinal))

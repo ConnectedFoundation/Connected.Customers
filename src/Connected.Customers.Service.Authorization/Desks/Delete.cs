@@ -10,6 +10,6 @@ namespace Connected.Customers.Service.Desks;
 internal sealed class Delete
 	: ServiceOperationAuthorization<IPrimaryKeyDto<int>>
 {
-	public override string? Type => ServiceMetaData.DeskKey;
-	public override string? PrimaryKey => Dto?.Id.ToString();
+	public override string Entity => ServiceMetaData.DeskKey;
+	public override string EntityId => Dto.Id.ToString();
 }

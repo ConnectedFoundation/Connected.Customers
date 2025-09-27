@@ -13,6 +13,9 @@ namespace Connected.Customers.Service.Tickets;
 internal sealed class Delete(IClaimService claims, IAuthenticationService authentication, ITicketService tickets)
 	: ServiceOperationAuthorization<IUpdateTicketDto>
 {
+	public override string Entity => ServiceMetaData.DeskKey;
+	public override string EntityId => ((ITicketDto)Dto).Head.ToString();
+
 	protected override async Task<AuthorizationResult> OnInvoke()
 	{
 		var ticket = await tickets.Select(Dto);
@@ -24,7 +27,7 @@ internal sealed class Delete(IClaimService claims, IAuthenticationService authen
 		/*
 		 * Ticket moderator can delete any ticket.
 		 */
-		if (await identity.HasClaim(claims, DeskClaims.ModerateTickets))
+		if (await identity.HasClaim(claims, DeskClaims.ModerateTickets, Entity, EntityId))
 			return AuthorizationResult.Pass;
 
 		return AuthorizationResult.Skip;

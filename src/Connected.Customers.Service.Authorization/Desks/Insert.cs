@@ -1,4 +1,5 @@
 ﻿using Connected.Annotations;
+using Connected.Annotations.Entities;
 using Connected.Authorization.Services;
 using Connected.Customers.Service.Desks.Dtos;
 using Connected.Membership.Annotations;
@@ -10,4 +11,6 @@ namespace Connected.Customers.Service.Desks;
 internal sealed class Insert
 	: ServiceOperationAuthorization<IInsertDeskDto>
 {
+	public override string Entity => SchemaAttribute.CustomersSchema;
+	public override string EntityId => NullAuthorizationEntityId;
 }

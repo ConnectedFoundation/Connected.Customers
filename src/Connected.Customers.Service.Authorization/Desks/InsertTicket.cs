@@ -10,7 +10,7 @@ namespace Connected.Customers.Service.Desks;
 [Claims(DeskClaims.InsertTicket)]
 internal sealed class InsertTicket : ServiceOperationAuthorization<IInsertTicketDto>
 {
-	public override string? Type => ServiceMetaData.DeskKey;
+	public override string Entity => ServiceMetaData.DeskKey;
 
-	public override string? PrimaryKey => Dto.Head.ToString();
+	public override string EntityId => Dto.Head.ToString();
 }
