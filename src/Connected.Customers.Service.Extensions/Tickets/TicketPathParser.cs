@@ -1,4 +1,4 @@
-﻿using Connected.SaaS.Storage;
+﻿using Connected.ServiceModel.Storage;
 
 namespace Connected.Customers.Service.Tickets;
 
