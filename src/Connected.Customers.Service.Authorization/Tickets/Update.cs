@@ -11,7 +11,8 @@ using Connected.Membership.Claims;
 namespace Connected.Customers.Service.Tickets;
 
 [Middleware<ITicketService>(nameof(ITicketService.Update))]
-internal sealed class Update(IClaimService claims, IAuthenticationService authentication, ITicketService tickets) : ServiceOperationAuthorization<IUpdateTicketDto>
+internal sealed class Update(IClaimService claims, IAuthenticationService authentication, ITicketService tickets)
+	: BoundServiceOperationAuthorization<IUpdateTicketDto>
 {
 	public override string Entity => typeof(ITicket).EntityKey();
 	public override string EntityId => Dto.Id.ToString();

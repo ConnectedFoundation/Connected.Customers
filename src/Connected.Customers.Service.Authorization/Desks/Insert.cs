@@ -9,7 +9,7 @@ namespace Connected.Customers.Service.Desks;
 [Middleware<IDeskService>(nameof(IDeskService.Insert))]
 [Claims(DeskClaims.InsertDesk)]
 internal sealed class Insert
-	: ServiceOperationAuthorization<IInsertDeskDto>
+	: BoundServiceOperationAuthorization<IInsertDeskDto>
 {
 	public override string Entity => SchemaAttribute.CustomersSchema;
 	public override string EntityId => NullAuthorizationEntityId;

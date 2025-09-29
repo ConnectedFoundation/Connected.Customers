@@ -11,7 +11,7 @@ namespace Connected.Customers.Service.Tickets;
 
 [Middleware<ITicketService>(nameof(ITicketService.Delete))]
 internal sealed class Delete(IClaimService claims, IAuthenticationService authentication, ITicketService tickets)
-	: ServiceOperationAuthorization<IUpdateTicketDto>
+	: BoundServiceOperationAuthorization<IUpdateTicketDto>
 {
 	public override string Entity => ServiceMetaData.DeskKey;
 	public override string EntityId => ((ITicketDto)Dto).Head.ToString();

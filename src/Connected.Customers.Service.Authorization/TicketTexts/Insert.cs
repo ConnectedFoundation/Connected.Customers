@@ -14,7 +14,7 @@ namespace Connected.Customers.Service.TicketTexts;
 
 [Middleware<ITicketTextService>(nameof(ITicketTextService.Insert))]
 internal sealed class Insert(IClaimService claims, IAuthenticationService authentication, ITicketService tickets)
-	: ServiceOperationAuthorization<IInsertTicketTextDto>
+	: BoundServiceOperationAuthorization<IInsertTicketTextDto>
 {
 	public override string Entity => typeof(ITicket).EntityKey();
 	public override string EntityId => Dto.Id.ToString();

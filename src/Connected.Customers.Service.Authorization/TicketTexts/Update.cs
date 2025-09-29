@@ -14,7 +14,7 @@ namespace Connected.Customers.Service.TicketTexts;
 
 [Middleware<ITicketTextService>(nameof(ITicketTextService.Update))]
 internal sealed class Update(IClaimService claims, IAuthenticationService authentication, ITicketService tickets)
-	: ServiceOperationAuthorization<IUpdateTicketDto>
+	: BoundServiceOperationAuthorization<IUpdateTicketDto>
 {
 	public override string Entity => typeof(ITicket).EntityKey();
 	public override string EntityId => Dto.Id.ToString();

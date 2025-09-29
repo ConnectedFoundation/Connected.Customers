@@ -8,7 +8,7 @@ namespace Connected.Customers.Service.Desks;
 
 [Middleware<ITicketService>(nameof(ITicketService.Insert))]
 [Claims(DeskClaims.InsertTicket)]
-internal sealed class InsertTicket : ServiceOperationAuthorization<IInsertTicketDto>
+internal sealed class InsertTicket : BoundServiceOperationAuthorization<IInsertTicketDto>
 {
 	public override string Entity => ServiceMetaData.DeskKey;
 
