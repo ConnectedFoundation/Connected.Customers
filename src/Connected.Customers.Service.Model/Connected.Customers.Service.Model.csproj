@@ -12,7 +12,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Connected.Documents\src\Connected.Documents.Model\Connected.Documents.Model.csproj" />
+	  <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Sdk\Connected.Sdk.csproj" />
+	  <ProjectReference Include="..\..\..\Connected.Documents\src\Connected.Documents.Sdk\Connected.Documents.Sdk.csproj" />
 	</ItemGroup>
 
 </Project>
