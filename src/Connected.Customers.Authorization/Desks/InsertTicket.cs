@@ -1,0 +1,16 @@
+﻿using Connected.Annotations;
+using Connected.Authorization.Services;
+using Connected.Customers.Tickets;
+using Connected.Customers.Tickets.Dtos;
+using Connected.Membership.Annotations;
+
+namespace Connected.Customers.Authorization.Desks;
+
+[Middleware<ITicketService>(nameof(ITicketService.Insert))]
+[Claims(DeskClaims.InsertTicket)]
+internal sealed class InsertTicket : BoundServiceOperationAuthorization<IInsertTicketDto>
+{
+	public override string Entity => ServiceMetaData.DeskKey;
+
+	public override string EntityId => Dto.Head.ToString();
+}
