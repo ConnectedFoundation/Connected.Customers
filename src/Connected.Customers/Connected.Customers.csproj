@@ -7,9 +7,9 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Connected.Core\src\Connected.Sdk\Connected.Sdk.csproj" />
-		<ProjectReference Include="..\..\..\Connected.Documents\src\Connected.Documents.Extensions\Connected.Documents.Extensions.csproj" />
-		<ProjectReference Include="..\..\..\Connected.ServiceModel\src\Connected.ServiceModel.Sdk\Connected.ServiceModel.Sdk.csproj" />
+		<ProjectReference Include="$(ConnectedCore)\Connected.Sdk\Connected.Sdk.csproj" />
+		<ProjectReference Include="$(ConnectedDocuments)\Connected.Documents.Extensions\Connected.Documents.Extensions.csproj" />
+		<ProjectReference Include="$(ConnectedServiceModel)\Connected.ServiceModel.Sdk\Connected.ServiceModel.Sdk.csproj" />
 		<ProjectReference Include="..\Connected.Customers.Extensions\Connected.Customers.Extensions.csproj" />
 		<ProjectReference Include="..\Connected.Customers.Model\Connected.Customers.Model.csproj" />
 	</ItemGroup>
