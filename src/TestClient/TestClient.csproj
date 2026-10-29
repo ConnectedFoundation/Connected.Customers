@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Core.Storage.Sql\Connected.Core.Storage.Sql.csproj" />
-    <ProjectReference Include="..\..\..\Connected.Core\src\Connected.Runtime\Connected.Runtime.csproj" />
+    <ProjectReference Include="$(ConnectedCore)\Connected.Core.Storage.Sql\Connected.Core.Storage.Sql.csproj" />
+    <ProjectReference Include="$(ConnectedCore)\Connected.Runtime\Connected.Runtime.csproj" />
     <ProjectReference Include="..\Connected.Customers.Service.Desks\Connected.Customers.Service.Desks.csproj" />
     <ProjectReference Include="..\Connected.Customers.Service.Tickets\Connected.Customers.Service.Tickets.csproj" />
     <ProjectReference Include="..\Connected.Customers.Tests\Connected.Customers.Tests.csproj" />
